@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Skills — 1000+ Ready-to-Use Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE6;
+    --fg: #1A1614;
+    --accent: #C0643A;
+    --accent-light: #E8957A;
+    --muted: #8C7B70;
+    --card: #EDE7DF;
+    --card-border: #D9CFC5;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Fraunces', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #A8502A; }
+
+  /* ── HERO ── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 80px 60px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(36px, 4.5vw, 58px);
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-text h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 420px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 18px 36px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  .hero-cta:hover { background: #A8502A; transform: translateY(-1px); }
+
+  .hero-meta {
+    display: flex;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .hero-meta span::before { content: '• '; color: var(--accent); }
+
+  /* Terminal card */
+  .terminal {
+    background: #1E1A18;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  }
+  .terminal-bar {
+    background: #2A2320;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-r { background: #FF5F57; }
+  .dot-y { background: #FEBC2E; }
+  .dot-g { background: #28C840; }
+  .terminal-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #6B6461;
+    margin-left: 8px;
+  }
+  .terminal-body {
+    padding: 20px 20px 24px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.8;
+    color: #C4B8B0;
+  }
+  .t-green { color: #50FA7B; }
+  .t-orange { color: var(--accent-light); }
+  .t-dim { color: #6B6461; }
+  .t-white { color: #F8F8F2; }
+  .t-tag {
+    display: inline-block;
+    background: #2A2320;
+    border: 1px solid #3A3330;
+    padding: 2px 8px;
+    font-size: 10px;
+    border-radius: 3px;
+    margin: 2px 3px 2px 0;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    border-top: 1px solid #2A2320;
+    margin-top: 4px;
+  }
+  .stat-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-right: 1px solid #2A2320;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { color: var(--accent-light); font-weight: 600; font-size: 14px; }
+  .stat-lbl { color: #6B6461; font-size: 10px; margin-top: 2px; }
+
+  /* ── HOW IT WORKS ── */
+  .section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .terminal-section {
+    background: #1E1A18;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    margin: 0 40px;
+  }
+
+  .section-inner {
+    padding: 60px 60px 60px;
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 600;
+    color: #F8F8F2;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    text-align: center;
+    color: #6B6461;
+    font-size: 14px;
+    margin-bottom: 60px;
+    font-family: var(--mono);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .step {
+    background: #2A2320;
+    border: 1px solid #3A3330;
+    padding: 28px;
+    border-radius: 4px;
+  }
+  .step-num {
+    font-family: var(--mono);
+    font-size: 32px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .step h3 {
+    font-family: var(--mono);
+    font-size: 15px;
+    color: #F8F8F2;
+    margin-bottom: 4px;
+  }
+  .step-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+  .step p {
+    font-size: 13px;
+    color: #9A8E88;
+    line-height: 1.7;
+  }
+  .step-check {
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #50FA7B;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* ── PERSONAS ── */
+  .personas-section { padding: 80px 60px; }
+  .personas-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 48px);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .personas-sub {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 60px;
+    font-size: 15px;
+  }
+
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .persona-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    border-radius: 4px;
+  }
+  .persona-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .persona-card blockquote {
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 16px;
+    border: none;
+  }
+  .persona-result {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg);
+    padding-top: 12px;
+    border-top: 1px solid var(--card-border);
+  }
+  .persona-result::before { content: '→ '; color: var(--accent); }
+
+  /* ── CATEGORIES ── */
+  .categories-section {
+    background: #1E1A18;
+    padding: 0;
+    margin: 0 40px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .cat-inner {
+    padding: 60px;
+  }
+  .cat-title {
+    font-family: var(--mono);
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 600;
+    color: #F8F8F2;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .cat-sub {
+    text-align: center;
+    color: #6B6461;
+    font-size: 13px;
+    margin-bottom: 50px;
+    font-family: var(--mono);
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cat-card {
+    background: #2A2320;
+    border: 1px solid #3A3330;
+    padding: 18px 20px;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+  .cat-card:hover { border-color: var(--accent); }
+  .cat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .cat-name {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #F8F8F2;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .cat-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent-light);
+    white-space: nowrap;
+    margin-left: 8px;
+  }
+  .cat-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .cat-tag {
+    background: #1E1A18;
+    border: 1px solid #3A3330;
+    color: #6B6461;
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  /* ── COMPARISON ── */
+  .compare-section { padding: 80px 60px; }
+  .compare-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 48px);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .compare-sub {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 60px;
+    font-size: 15px;
+  }
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .compare-card {
+    padding: 28px;
+    border-radius: 4px;
+  }
+  .compare-card.bad {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+  }
+  .compare-card.good {
+    background: #1E1A18;
+    border: 1px solid #3A3330;
+  }
+  .compare-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-card.bad .compare-label { color: var(--muted); }
+  .compare-card.good .compare-label { color: var(--accent-light); }
+  .compare-prompt {
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .compare-card.bad .compare-prompt {
+    background: rgba(0,0,0,0.06);
+    color: var(--fg);
+  }
+  .compare-card.good .compare-prompt { color: #F8F8F2; }
+  .compare-output {
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .compare-card.bad .compare-output { color: var(--muted); }
+  .compare-card.good .compare-output { color: #9A8E88; }
+  .compare-verdict {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+  .bad-verdict { background: #EDE7DF; color: var(--muted); }
+  .good-verdict { background: rgba(80, 250, 123, 0.1); color: #50FA7B; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section { padding: 80px 60px; }
+  .test-title {
+    font-family: var(--mono);
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .test-sub {
+    text-align: center;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-bottom: 50px;
+  }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto 40px;
+  }
+  .test-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 24px;
+    border-radius: 4px;
+  }
+  .test-author {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .test-role {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .test-skill-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--accent);
+    background: rgba(192,100,58,0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .test-card p {
+    font-size: 13px;
+    color: var(--fg);
+    line-height: 1.7;
+  }
+  .test-card p::before { content: '" '; color: var(--accent); font-size: 16px; }
+
+  /* ── PRICING ── */
+  .pricing-section {
+    padding: 80px 60px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .pricing-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 46px);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .pricing-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pricing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .pricing-header-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .savings-badge {
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .pricing-items {
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .pricing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .pricing-item:last-child { border-bottom: none; }
+  .pricing-item-name::before { content: '✓ '; color: var(--accent); }
+  .pricing-item-price {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .pricing-total {
+    padding: 16px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .pricing-total-label { font-weight: 500; font-size: 14px; }
+  .pricing-total-val {
+    font-family: var(--mono);
+    text-decoration: line-through;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .pricing-cta-block {
+    padding: 28px;
+    text-align: center;
+  }
+  .price-big {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: 72px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .cta-full {
+    display: block;
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+  .cta-full:hover { background: #A8502A; }
+  .pricing-badges {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .pricing-badges span::before { content: '○ '; }
+
+  /* ── GUARANTEE ── */
+  .guarantee-section {
+    background: #1E1A18;
+    margin: 0 40px;
+    border-radius: 8px;
+    padding: 60px;
+    text-align: center;
+  }
+  .guarantee-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .guarantee-badge {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .guarantee-title {
+    font-family: var(--mono);
+    font-size: clamp(20px, 2.5vw, 30px);
+    font-weight: 600;
+    color: #F8F8F2;
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .guarantee-title span { color: var(--accent-light); }
+  .guarantee-text {
+    color: #9A8E88;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .guarantee-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .g-stat { text-align: center; }
+  .g-stat-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent-light);
+    display: block;
+  }
+  .g-stat-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #6B6461;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 80px 60px; max-width: 720px; margin: 0 auto; }
+  .faq-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 46px);
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 20px 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--fg);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-icon {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--accent);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    padding-bottom: 0;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-cta-wrap { text-align: center; margin-top: 50px; }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 80px 60px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .final-pill {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .final-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .final-title em { font-style: italic; color: var(--accent); }
+  .final-sub {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .final-stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .f-stat {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 14px 24px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .f-stat-num {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+  }
+  .f-stat-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-left { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-disclaimer {
+    width: 100%;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 800px;
+    opacity: 0.7;
+  }
+
+  /* ── SCROLLING TAGS ── */
+  .scroll-tags-wrap {
+    overflow: hidden;
+    padding: 12px 0;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 0;
+  }
+  .scroll-tags {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: scroll-left 40s linear infinite;
+  }
+  .scroll-tags:hover { animation-play-state: paused; }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .stag {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    padding: 5px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 40px 24px 60px; gap: 40px; }
+    .section, .personas-section, .compare-section, .testimonials-section, .faq-section, .final-cta { padding: 50px 24px; }
+    .steps { grid-template-columns: 1fr; }
+    .personas-grid { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .test-grid { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    .categories-section, .terminal-section, .guarantee-section { margin: 0 16px; }
+    .cat-inner, .section-inner, .guarantee-section { padding: 40px 24px; }
+    .final-stats { flex-wrap: wrap; }
+    footer { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">> Claude <span>Skills</span> _</a>
+  <button class="nav-cta" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Get Started</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>1,000+ Ready Skills that Turn Claude into <em>Your Complete Team.</em></h1>
+    <p>Over 1,000 expert-built skills across 12 business categories. Compatible with Claude.ai, Claude Code, and Cowork — content, marketing, finance, sales, and operations solved in seconds.</p>
+    <a href="#pricing" class="hero-cta">Get the Full Pack — $9</a>
+    <div class="hero-meta">
+      <span>One-time payment</span>
+      <span>Instant download</span>
+      <span>7-day guarantee</span>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+      <span class="terminal-title">claude@skills ~ % /sales-funnel</span>
+    </div>
+    <div class="terminal-body">
+      <div><span class="t-green">✓ Skill activated</span> <span class="t-dim">—</span> <span class="t-orange">Sales Funnel Builder</span></div>
+      <div class="t-dim" style="margin-top:8px">> Tell me what your business wastes time on every day.</div>
+      <div style="margin-top:8px"><span class="t-dim">></span> <span class="t-white">Agency with 8 people, 15 manual proposals/month, sending follow-ups on WhatsApp, tracking deals in a spreadsheet. (4h/day)</span></div>
+      <div style="margin-top:10px"><span class="t-orange">3 automations mapped.</span> <span class="t-green">$18,400/yr unlocked.</span></div>
+      <div style="margin-top:8px; background: #2A2320; padding:10px; border-radius:3px; border-left:2px solid var(--accent)">
+        <div class="t-dim" style="font-size:10px">Automation #1 — Proposals on autopilot</div>
+        <div style="font-size:11px; color:#C4B8B0; margin-top:4px">Before: <span style="color:#E8957A">12h/week</span> → After: <span class="t-green">45min/week</span> → Save: 3 days</div>
+      </div>
+      <div style="margin-top:8px; font-size:10px" class="t-dim">+ 2 more automations with full step-by-step...</div>
+      <div style="margin-top:10px">
+        <span class="t-tag" style="color:var(--accent-light)">Sales & Commercial</span>
+        <span class="t-tag" style="color:#50FA7B">Advanced</span>
+        <span class="t-tag" style="color:var(--accent-light)">Automation</span>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-item"><div class="stat-num">+1,000</div><div class="stat-lbl">skills</div></div>
+      <div class="stat-item"><div class="stat-num">12</div><div class="stat-lbl">categories</div></div>
+      <div class="stat-item"><div class="stat-num">2 min</div><div class="stat-lbl">to install</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLL TAGS -->
+<div class="scroll-tags-wrap">
+  <div class="scroll-tags">
+    <span class="stag">WhatsApp Sales Script</span><span class="stag">Service Contract</span><span class="stag">High-Performance Morning Routine</span><span class="stag">Systematic Root-Cause Debugger</span><span class="stag">KPI Dashboard Builder</span><span class="stag">Facebook Ads Copy</span><span class="stag">Abandoned Cart Sequence</span><span class="stag">SOP Creator</span><span class="stag">Keyword Research</span><span class="stag">Pricing Model</span><span class="stag">Team OKRs</span><span class="stag">Product Hunt Launch</span><span class="stag">Brand Positioning</span><span class="stag">Cold Email Sequence</span><span class="stag">Content Calendar</span><span class="stag">Webinar Script</span>
+    <!-- duplicate for seamless loop -->
+    <span class="stag">WhatsApp Sales Script</span><span class="stag">Service Contract</span><span class="stag">High-Performance Morning Routine</span><span class="stag">Systematic Root-Cause Debugger</span><span class="stag">KPI Dashboard Builder</span><span class="stag">Facebook Ads Copy</span><span class="stag">Abandoned Cart Sequence</span><span class="stag">SOP Creator</span><span class="stag">Keyword Research</span><span class="stag">Pricing Model</span><span class="stag">Team OKRs</span><span class="stag">Product Hunt Launch</span><span class="stag">Brand Positioning</span><span class="stag">Cold Email Sequence</span><span class="stag">Content Calendar</span><span class="stag">Webinar Script</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="terminal-section">
+  <div class="terminal-bar">
+    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+    <span class="terminal-title">claude@skills ~ % ./install.sh</span>
+  </div>
+  <div class="section-inner">
+    <h2 class="section-title">Installs in 2 Minutes. Works Forever.</h2>
+    <p class="section-sub">No technical setup. No programming needed. Each skill has the expert framework built in — just tell Claude what you need.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Install</h3>
+        <div class="step-meta">2 min · no config</div>
+        <p>Download the pack and follow the screenshot guide. Drag a folder and you're done — everything installed.</p>
+        <div class="step-check">
+          <span>✓ Downloaded with 1 click</span>
+          <span>✓ Skills added to Claude</span>
+          <span>✓ 1,000+ skills ready to use</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Activate</h3>
+        <div class="step-meta">just say what you need</div>
+        <p>Tell Claude what you need in plain language. The right skill takes over automatically and asks the smart questions.</p>
+        <div style="margin-top:16px; background:#1E1A18; padding:12px; border-radius:3px; font-family:var(--mono); font-size:11px; color:#C4B8B0">
+          <div style="color:#6B6461">> I need to write a</div>
+          <div style="color:#F8F8F2; margin:4px 0">  landing page for my course</div>
+          <div style="color:#50FA7B; margin-top:8px">✓ Got it. What transformation does your course deliver?</div>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Deliver</h3>
+        <div class="step-meta">result · 1st attempt</div>
+        <p>Claude delivers formatted, professional output. No prompt tweaking, no trial and error.</p>
+        <div class="step-check" style="margin-top:16px">
+          <span style="color:#50FA7B">✓ Complete draft in 2 minutes</span>
+          <span style="color:#50FA7B">✓ Formatted & ready to use</span>
+          <span style="color:#50FA7B">✓ No editing needed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONAS -->
+<section class="personas-section">
+  <h2 class="personas-title">Who Uses It — and Why It Works.</h2>
+  <p class="personas-sub">Doesn't matter what size your operation is — if you use Claude and want more from it, this pack was made for you.</p>
+  <div class="personas-grid">
+    <div class="persona-card">
+      <div class="persona-label">Solo Founder</div>
+      <blockquote>"You handle marketing, finance, customer support, and still need to create content every week — all at the same time."</blockquote>
+      <div class="persona-result">One Claude trained for every part of your business.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-label">Startup Founder</div>
+      <blockquote>"You need to validate fast, iterate, and still ship product. Every hour lost on prompts is an hour away from building."</blockquote>
+      <div class="persona-result">Execution speed without hiring anyone.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-label">Consultant</div>
+      <blockquote>"You close a call and it still takes two days to send the proposal. The client cools off and the momentum dies."</blockquote>
+      <div class="persona-result">Proposal ready same day. Report in one afternoon.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-label">Content Creator</div>
+      <blockquote>"You stare at a blank page, rewrite the prompt five times, and the result still isn't what you had in mind."</blockquote>
+      <div class="persona-result">Post, script, carousel — right on the first try.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-label">Freelancer</div>
+      <blockquote>"You take on fewer projects than you could because operations eat the time that should go to actual work."</blockquote>
+      <div class="persona-result">Take on more projects without working more hours.</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-label">Small Team</div>
+      <blockquote>"Each person uses Claude differently. Inconsistent results, rework, no one on the same page."</blockquote>
+      <div class="persona-result">One standard process for everyone. Enterprise-level consistency.</div>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:40px">
+    <a href="#pricing" class="hero-cta">Get the Full Pack — $9</a>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<div class="categories-section">
+  <div class="terminal-bar">
+    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+    <span class="terminal-title">claude@skills ~ % ls -la skills/</span>
+  </div>
+  <div class="cat-inner">
+    <h2 class="cat-title">Everything Your Business Needs. One Folder.</h2>
+    <p class="cat-sub">12 categories, 1,000+ skills. Each with an embedded expert framework — Claude asks the right questions and delivers the right result.</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">📣 Marketing &amp; Paid Traffic</div>
+          <div class="cat-count">60+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Facebook Ads</span><span class="cat-tag">Google Ads</span><span class="cat-tag">TikTok Ads</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">✍️ Copywriting &amp; Persuasion</div>
+          <div class="cat-count">55+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Sales Page</span><span class="cat-tag">VSL Script</span><span class="cat-tag">Hook Writing</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">📱 Social Media &amp; Content</div>
+          <div class="cat-count">65+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Instagram Carousel</span><span class="cat-tag">YouTube Script</span><span class="cat-tag">Viral Formula</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">📧 Email Marketing &amp; Automation</div>
+          <div class="cat-count">40+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Email Sequence</span><span class="cat-tag">Welcome Flow</span><span class="cat-tag">Abandoned Cart</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">💰 Sales &amp; Commercial</div>
+          <div class="cat-count">50+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Sales Funnel</span><span class="cat-tag">Tripwire Offer</span><span class="cat-tag">Sales Script</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">📊 Management &amp; Planning</div>
+          <div class="cat-count">45+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">OKRs</span><span class="cat-tag">KPI Dashboard</span><span class="cat-tag">Project Brief</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">💼 Finance &amp; Pricing</div>
+          <div class="cat-count">35+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Financial Model</span><span class="cat-tag">Revenue Projection</span><span class="cat-tag">Unit Economics</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">🎯 Customer Service &amp; Success</div>
+          <div class="cat-count">40+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Onboarding Flow</span><span class="cat-tag">Churn Prevention</span><span class="cat-tag">Support Scripts</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">🔍 SEO &amp; Blog</div>
+          <div class="cat-count">45+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Keyword Research</span><span class="cat-tag">Pillar Page</span><span class="cat-tag">Featured Snippets</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">🧠 Strategy &amp; Market Analysis</div>
+          <div class="cat-count">35+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Competitor Analysis</span><span class="cat-tag">Go-to-Market</span><span class="cat-tag">Positioning</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">📋 HR &amp; Leadership</div>
+          <div class="cat-count">30+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Job Description</span><span class="cat-tag">Performance Review</span><span class="cat-tag">Team Meeting</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-header">
+          <div class="cat-name">🛠️ Productivity &amp; Processes</div>
+          <div class="cat-count">30+</div>
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">SOP Creator</span><span class="cat-tag">Automation Flow</span><span class="cat-tag">Daily Routine</span><span class="cat-tag">+more</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px">
+      <div style="font-family:var(--mono); font-size:12px; color:#6B6461; margin-bottom:20px">1,000+ skills total — all included in the pack.</div>
+      <a href="#pricing" class="hero-cta" style="display:inline-block">Get the Full Pack — $9</a>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON -->
+<section class="compare-section">
+  <h2 class="compare-title">You Already Use Claude. <em style="font-style:italic; color:var(--accent)">This is the Next Level.</em></h2>
+  <p class="compare-sub" style="color:var(--muted); font-size:15px">The difference between a generic answer and a professional result isn't the model — it's the instruction. Skills are frameworks built by specialists so Claude knows exactly what to do, how to do it, and how to deliver.</p>
+  <div class="compare-grid">
+    <div class="compare-card bad">
+      <div class="compare-label">» PROMPT ALONE</div>
+      <div class="compare-prompt">Write me a service contract for my agency</div>
+      <div class="compare-output">Here's a basic template:<br><br>SERVICE CONTRACT<br>By this instrument, the parties below agree to resolve the following contract under the terms and conditions...</div>
+      <span class="compare-verdict bad-verdict">Generic. Requires heavy editing.</span>
+    </div>
+    <div class="compare-card good">
+      <div class="compare-label" style="color:var(--accent-light)">● WITH SKILL</div>
+      <div class="compare-prompt" style="background:#2A2320; color:#F8F8F2">
+        <div style="color:#50FA7B; font-size:10px; margin-bottom:6px">✓ Skill activated — Service Contract</div>
+        Before generating, I need a few details:<br>
+        → What service will be provided?<br>
+        → Term and agreed value?<br>
+        → Termination and penalty clause?
+      </div>
+      <div class="compare-output">Marketing consulting, 3 months, $4,500/mo</div>
+      <span class="compare-verdict good-verdict">✓ Professional contract. Ready to sign.</span>
+    </div>
+  </div>
+  <p style="text-align:center; font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:24px">Same model. Same question. Completely different result.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="terminal-bar" style="background:#2A2320; border-radius:6px 6px 0 0; padding:12px 20px; display:flex; align-items:center; gap:8px; max-width:900px; margin:0 auto">
+    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+    <span class="terminal-title">claude@skills ~ % cat reviews.log</span>
+  </div>
+  <div style="background:#1E1A18; border-radius:0 0 6px 6px; max-width:900px; margin:0 auto; padding:40px 40px 24px">
+    <h2 class="test-title" style="color:#F8F8F2">Real Results. From People Who Already Installed It.</h2>
+    <p class="test-sub">+1,374 professionals using it daily. Here's what changed after they installed the pack.</p>
+    <div class="test-grid" style="max-width:100%">
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Rafael M.</div>
+        <div class="test-role" style="color:#6B6461">SaaS Founder</div>
+        <div class="test-skill-tag">sales-funnels/</div>
+        <p style="color:#9A8E88">I put together a complete pitch deck in under half an hour using the funnels skill. Claude asked questions I wouldn't have thought to ask myself. Better than what I'd written in 3 days.</p>
+      </div>
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Camila T.</div>
+        <div class="test-role" style="color:#6B6461">Marketing Consultant</div>
+        <div class="test-skill-tag">client-consulting/</div>
+        <p style="color:#9A8E88">Today I delivered the proposal the same day I closed the call. Before it took two days. The skill guides the whole process — the formatting comes out professional on the first try.</p>
+      </div>
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Bruno S.</div>
+        <div class="test-role" style="color:#6B6461">Content Creator</div>
+        <div class="test-skill-tag">content-copy/</div>
+        <p style="color:#9A8E88">In one afternoon I produce what used to take me a full week. Post, thread, carousel, script — everything. Content quality went up, time went down. Can't work without the skills anymore.</p>
+      </div>
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Marcelo A.</div>
+        <div class="test-role" style="color:#6B6461">Labor Lawyer</div>
+        <div class="test-skill-tag">legal-compliance/</div>
+        <p style="color:#9A8E88">I generate initial drafts in minutes, adapt clauses for each case and deliver immediately. I cut contract drafting time by 70%+ without opening a technical handbook. Now part of my daily workflow.</p>
+      </div>
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Pedro L.</div>
+        <div class="test-role" style="color:#6B6461">Full Stack Dev</div>
+        <div class="test-skill-tag">programming-dev/</div>
+        <p style="color:#9A8E88">API docs, code review, test generation — all with real project context. Claude became a co-pilot who actually knows the codebase. Delivering sprints faster with half the reviews I used to need.</p>
+      </div>
+      <div class="test-card" style="background:#2A2320; border-color:#3A3330">
+        <div class="test-author" style="color:#F8F8F2">Ana C.</div>
+        <div class="test-role" style="color:#6B6461">E-commerce Founder</div>
+        <div class="test-skill-tag">launch-growth/</div>
+        <p style="color:#9A8E88">I launched my store using skills for ads, SEO, and email from scratch. In ten days I had paying customers. Didn't need to hire anyone for any of these fronts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <h2 class="pricing-title">One Investment. Lifetime Access.</h2>
+  <div class="pricing-card">
+    <div class="pricing-header">
+      <div class="pricing-header-label">Complete Claude Skills Pack</div>
+      <div class="savings-badge">Save $291</div>
+    </div>
+    <div class="pricing-items">
+      <div class="pricing-item"><span class="pricing-item-name">Marketing, Copy &amp; Social Media (180+)</span><span class="pricing-item-price">$97</span></div>
+      <div class="pricing-item"><span class="pricing-item-name">Sales, Commercial &amp; Email (90+)</span><span class="pricing-item-price">$87</span></div>
+      <div class="pricing-item"><span class="pricing-item-name">Finance, Pricing &amp; Strategy (70+)</span><span class="pricing-item-price">$67</span></div>
+      <div class="pricing-item"><span class="pricing-item-name">Management, HR &amp; Operations (75+)</span><span class="pricing-item-price">$77</span></div>
+      <div class="pricing-item"><span class="pricing-item-name">SEO, Customer Success &amp; Productivity (115+)</span><span class="pricing-item-price">$57</span></div>
+    </div>
+    <div class="pricing-total">
+      <span class="pricing-total-label">Total Value</span>
+      <span class="pricing-total-val">$385</span>
+    </div>
+    <div class="pricing-cta-block">
+      <div style="font-family:var(--mono); font-size:12px; color:var(--muted); margin-bottom:4px">From $385 for only</div>
+      <div class="price-big">$9</div>
+      <div class="price-note">One-time payment · No subscription</div>
+      <a href="#" class="cta-full">Get the Full Pack — $9</a>
+      <div class="pricing-badges">
+        <span>7-day guarantee</span>
+        <span>Instant access</span>
+        <span>Lifetime access</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="guarantee-section">
+  <div class="terminal-bar" style="background:#2A2320; margin:-60px -60px 40px; padding:12px 20px; display:flex; align-items:center; gap:8px">
+    <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+    <span class="terminal-title">claude@skills ~ % cat guarantee.md</span>
+  </div>
+  <span class="guarantee-icon">🛡️</span>
+  <span class="guarantee-badge">7-Day Guarantee</span>
+  <h2 class="guarantee-title">Seven Days to Test It.<br><span>Money Back if You Don't Love It.</span></h2>
+  <p class="guarantee-text">Install and use the full pack freely for 7 days. If you decide it wasn't worth it — for any reason — just send an email and we refund 100% of the amount. No process, no questions, no runaround. We take on the risk because we know it works.</p>
+  <div class="guarantee-stats">
+    <div class="g-stat"><span class="g-stat-num">7</span><span class="g-stat-lbl">days full test</span></div>
+    <div class="g-stat"><span class="g-stat-num">100%</span><span class="g-stat-lbl">refunded</span></div>
+    <div class="g-stat"><span class="g-stat-num">0</span><span class="g-stat-lbl">bureaucracy</span></div>
+  </div>
+  <div style="margin-top:40px">
+    <a href="#pricing" class="hero-cta" style="display:inline-block">Get the Full Pack — $9</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2 class="faq-title">Any Questions?</h2>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Aren't these just fancy prompts?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">No. A skill is a full expert system — it has a defined goal, a specialist framework, context questions Claude needs to ask, output structure, and usage rules. The difference is the same as between a blank text box and a senior consultant who already knows what to ask and how to deliver.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      How do I install it?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Download the pack, follow the screenshot guide (takes 2 minutes), drag the folder to the right place, and you're done. No technical knowledge needed whatsoever.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Where can I use it?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Claude.ai (web, mobile and desktop), Claude Code, and Cowork. On the web Claude detects the skill automatically. On Claude Code, you invoke it with /skill-name. No switching tools, no learning anything new.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Does it work for my business?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">If you use Claude for anything in your business — marketing, sales, content, operations, legal, finance — yes. The pack covers 12 categories and over 1,000 use cases specifically designed for real-world business contexts.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What exactly is a skill?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Each skill is a folder with a plain text file. No intermediate platform, no monthly fee, no lock-in. You download, install, and own it forever. Open Agent Skills standard — compatible with any Claude interface.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      What if I don't like it?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">7-day 100% money-back guarantee. Send an email to contact@avoraai.io — we process the refund immediately. No questions, no process, no runaround.</div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggleFaq(this)">
+      Does it work for teams or just individually?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">Both. Individual users get consistent results from day one. Teams get a shared standard — everyone using Claude the same way, with the same quality of output. One license, multiple users on the team.</div>
+  </div>
+  <div class="faq-cta-wrap">
+    <a href="#pricing" class="hero-cta" style="display:inline-block">Get the Full Pack — $9</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <span class="final-pill">● Instant Access · 7-Day Guarantee</span>
+  <h2 class="final-title">The Claude You Use Today <em>Has So Much More to Give.</em></h2>
+  <p class="final-sub">1,000 skills ready. All areas of your business covered. One payment, access forever.</p>
+  <a href="#pricing" class="hero-cta" style="display:inline-block; padding:20px 48px; font-size:14px">Get the Full Pack — $9</a>
+  <div class="final-stats">
+    <div class="f-stat"><span class="f-stat-num">+1,000</span><span class="f-stat-lbl">ready skills</span></div>
+    <div class="f-stat"><span class="f-stat-num">12</span><span class="f-stat-lbl">categories</span></div>
+    <div class="f-stat"><span class="f-stat-num">$9</span><span class="f-stat-lbl">one-time</span></div>
+    <div class="f-stat"><span class="f-stat-num">7 days</span><span class="f-stat-lbl">guarantee</span></div>
+  </div>
+  <p style="margin-top:24px; font-family:var(--mono); font-size:11px; color:var(--muted)">Not happy? <strong>You have a 7-day guarantee.</strong> No questions, no process.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div style="margin-bottom:8px; font-weight:500">contact@avoraai.io</div>
+    <div>© 2026 Avora AI. All rights reserved.</div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Instagram</a>
+  </div>
+  <div class="footer-disclaimer">
+    Legal Notice: This site is not affiliated with Facebook, Instagram, or Meta. The results mentioned are real but vary from person to person. Avora AI is an educational product that offers strategic models and skills for personal or professional use with AI tools like Claude. It is not a consulting, advisory, or production service. The use of skills is entirely the user's responsibility, who must apply, review, and adapt results according to their own judgment. Avora is not responsible for decisions or any other type of content generated from the skills provided. All AI-generated material must be carefully reviewed and validated by a qualified professional. By purchasing this product, the user declares being aware that the skills are mere AI enablers, without any guarantee of accuracy, and that Avora is not responsible for their proper or improper use.
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
