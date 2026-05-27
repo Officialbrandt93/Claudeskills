@@ -390,6 +390,21 @@ footer{
   .bundle-grid{grid-template-columns:1fr;}
   .test-grid{grid-template-columns:1fr;}
   .pricing-wrap{padding:0;}
+
+  /* Compare section */
+  #compare{padding:56px 20px 40px!important;}
+  .options-grid{grid-template-columns:1fr!important;gap:16px!important;margin-bottom:32px!important;}
+
+  /* Pricing section */
+  #pricing{padding:40px 20px 60px!important;}
+  #pricing .tab-row{flex-wrap:wrap;gap:8px;}
+  #pricing .tab-row button{flex:1;min-width:130px;font-size:12px!important;padding:10px 10px!important;}
+
+  /* Countdown fix */
+  .countdown-box{flex-direction:column;align-items:flex-start;gap:8px;}
+  .countdown-timer{justify-content:flex-start;}
+  .ct-num{font-size:20px!important;}
+
   .final-section{padding:60px 24px;}
   footer{padding:32px 24px;}
   .footer-links{gap:16px;}
@@ -626,15 +641,88 @@ footer{
   </div>
 </div>
 
+<!-- COMPARISON SECTION -->
+<div id="compare" style="padding:90px 60px 60px;">
+  <h2 class="pricing-title" style="margin-bottom:12px;">Choose Your <em>Option.</em></h2>
+  <p style="text-align:center;color:var(--fg2);font-size:15px;max-width:520px;margin:0 auto 52px;">Two ways to supercharge Claude. Pick the one that fits where you are right now.</p>
+
+  <!-- Two option cards -->
+  <div class="options-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto 48px;">
+
+    <!-- Option 1: Skills Only -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg3);margin-bottom:12px;">OPTION 1</div>
+      <div style="font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:8px;line-height:1.2;">1,000+ Claude Skills</div>
+      <div style="font-size:13px;color:var(--fg2);margin-bottom:20px;line-height:1.65;">Ready-made skill files that turn Claude into a specialist. Drag, drop, and go — any task, any area.</div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>1,000+ skill files · 13 categories</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Drag into Claude — live in 60 seconds</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Free 30-page usage guide</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Lifetime updates</div>
+        <div style="font-size:13px;color:var(--fg3);display:flex;gap:8px;"><span style="flex-shrink:0;">–</span>Does not include AI agents</div>
+        <div style="font-size:13px;color:var(--fg3);display:flex;gap:8px;"><span style="flex-shrink:0;">–</span>No full-workflow automation</div>
+      </div>
+      <div style="font-family:var(--serif);font-size:36px;font-weight:900;color:var(--accent);line-height:1;margin-bottom:4px;">$9</div>
+      <div style="font-size:12px;color:var(--fg3);margin-bottom:16px;">One-time · No subscription</div>
+      <a href="#pricing" onclick="switchTab('skills')" style="display:block;text-align:center;background:var(--bg3);color:var(--fg);border:1px solid var(--border);padding:12px;font-size:13px;font-weight:600;border-radius:8px;text-decoration:none;">See Skills Plan →</a>
+    </div>
+
+    <!-- Option 2: Bundle -->
+    <div style="background:var(--bg2);border:2px solid var(--accent);border-radius:14px;padding:28px;position:relative;">
+      <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap;letter-spacing:0.06em;">⭐ BEST VALUE</div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">OPTION 2</div>
+      <div style="font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:8px;line-height:1.2;">Skills + Agents Pro Pack</div>
+      <div style="font-size:13px;color:var(--fg2);margin-bottom:20px;line-height:1.65;">Everything in Skills, plus 100+ AI agents that handle entire workflows — autonomously, from the first message.</div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>1,000+ skill files · 13 categories</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Drag into Claude — live in 60 seconds</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Free 30-page usage guide</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span>Lifetime updates</div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span><strong>100+ specialized AI agents</strong></div>
+        <div style="font-size:13px;color:var(--fg2);display:flex;gap:8px;"><span style="color:var(--accent);font-weight:700;flex-shrink:0;">✓</span><strong>10 business areas fully covered</strong></div>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:4px;">
+        <div style="font-family:var(--serif);font-size:36px;font-weight:900;color:var(--accent);line-height:1;">$17</div>
+        <div style="font-size:13px;color:var(--fg3);text-decoration:line-through;">$194 value</div>
+      </div>
+      <div style="font-size:12px;color:var(--fg3);margin-bottom:16px;">One-time · No subscription</div>
+      <a href="#pricing" onclick="switchTab('bundle')" style="display:block;text-align:center;background:var(--accent);color:#fff;padding:12px;font-size:13px;font-weight:600;border-radius:8px;text-decoration:none;">See Bundle Plan →</a>
+    </div>
+  </div>
+
+  <!-- Feature comparison table -->
+  <div style="max-width:860px;margin:0 auto;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg2);">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--bg3);border-bottom:1px solid var(--border);">
+      <div style="padding:13px 20px;font-size:11px;font-weight:600;color:var(--fg3);text-transform:uppercase;letter-spacing:0.08em;">Feature</div>
+      <div style="padding:13px 20px;font-size:11px;font-weight:600;color:var(--fg2);text-align:center;text-transform:uppercase;letter-spacing:0.06em;">Skills Only</div>
+      <div style="padding:13px 20px;font-size:11px;font-weight:600;color:var(--accent);text-align:center;text-transform:uppercase;letter-spacing:0.06em;">Skills + Agents</div>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">1,000+ skill files</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);background:rgba(196,100,74,0.03);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">13 categories covered</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">Free usage guide (30 pages)</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);background:rgba(196,100,74,0.03);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">Lifetime updates</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">100+ specialized AI agents</div><div style="padding:12px 20px;text-align:center;color:var(--fg3);">—</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);background:rgba(196,100,74,0.03);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">Marketing, legal, finance & HR agents</div><div style="padding:12px 20px;text-align:center;color:var(--fg3);">—</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border);"><div style="padding:12px 20px;font-size:13px;color:var(--fg2);">Full-workflow autonomous execution</div><div style="padding:12px 20px;text-align:center;color:var(--fg3);">—</div><div style="padding:12px 20px;text-align:center;color:var(--accent);font-weight:700;">✓</div></div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;"><div style="padding:14px 20px;font-size:14px;font-weight:700;color:var(--fg);">Price</div><div style="padding:14px 20px;text-align:center;font-family:var(--serif);font-size:22px;font-weight:900;color:var(--fg);">$9</div><div style="padding:14px 20px;text-align:center;font-family:var(--serif);font-size:22px;font-weight:900;color:var(--accent);">$17</div></div>
+  </div>
+</div>
+
 <!-- PRICING -->
-<div style="padding:90px 60px;" id="pricing">
+<div style="padding:40px 60px 90px;" id="pricing">
   <h2 class="pricing-title">One Price. <em>Everything</em> Included.</h2>
-  <div class="pricing-wrap">
+
+  <!-- Tab switcher -->
+  <div class="tab-row" style="display:flex;justify-content:center;gap:8px;margin-bottom:32px;">
+    <button id="tab-skills" onclick="switchTab('skills')" style="background:var(--accent);color:#fff;border:none;padding:11px 26px;font-family:var(--sans);font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;transition:all 0.2s;">Skills Only — $9</button>
+    <button id="tab-bundle" onclick="switchTab('bundle')" style="background:var(--bg2);color:var(--fg2);border:1px solid var(--border);padding:11px 26px;font-family:var(--sans);font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;transition:all 0.2s;">Skills + Agents — $17</button>
+  </div>
+
+  <!-- Panel: Skills Only -->
+  <div id="panel-skills" class="pricing-wrap">
     <div class="pricing-card">
       <div class="pricing-top">🔥 85% OFF — TODAY ONLY</div>
       <div class="pricing-body">
-
-        <!-- Countdown -->
         <div class="countdown-box">
           <div class="countdown-label">⏰ Price expires in:</div>
           <div class="countdown-timer">
@@ -645,11 +733,9 @@ footer{
             <div class="ct-unit"><span class="ct-num" id="ct-s">21</span><span class="ct-label">SEC</span></div>
           </div>
         </div>
-
         <div class="price-regular">Regular: $97</div>
         <div class="price-main">$9</div>
         <div class="price-note">One-time payment · Instant download · Yours forever</div>
-
         <div class="price-features">
           <div class="pf-row"><span class="pf-row-icon">📦</span><span class="pf-row-name">1,000+ Skill Files</span><span class="pf-row-detail">All 13 categories</span></div>
           <div class="pf-row"><span class="pf-row-icon">📖</span><span class="pf-row-name">Free Usage Guide</span><span class="pf-row-detail">30-page bonus</span></div>
@@ -658,8 +744,44 @@ footer{
           <div class="pf-row"><span class="pf-row-icon">✅</span><span class="pf-row-name">Universal Compatibility</span><span class="pf-row-detail">All Claude platforms</span></div>
           <div class="pf-row"><span class="pf-row-icon">🛡️</span><span class="pf-row-name">7-Day Guarantee</span><span class="pf-row-detail">100% risk-free</span></div>
         </div>
-
         <a href="https://go.centerpag.com/PPU38CQC67L" target="_blank" rel="noopener" class="price-cta">⚡ Get Instant Access for $9</a>
+        <div class="price-microcopy">
+          <span class="pmc">Secure Checkout</span>
+          <span class="pmc">Instant Delivery</span>
+          <span class="pmc">7-Day Refund</span>
+          <span class="pmc">No Subscription</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel: Skills + Agents Bundle -->
+  <div id="panel-bundle" class="pricing-wrap" style="display:none;">
+    <div class="pricing-card" style="border-color:var(--accent);">
+      <div class="pricing-top">⭐ BEST VALUE — SKILLS + AGENTS PRO PACK</div>
+      <div class="pricing-body">
+        <div class="countdown-box">
+          <div class="countdown-label">⏰ Price expires in:</div>
+          <div class="countdown-timer">
+            <div class="ct-unit"><span class="ct-num" id="ct-h2">08</span><span class="ct-label">HRS</span></div>
+            <span class="ct-sep">·</span>
+            <div class="ct-unit"><span class="ct-num" id="ct-m2">18</span><span class="ct-label">MIN</span></div>
+            <span class="ct-sep">·</span>
+            <div class="ct-unit"><span class="ct-num" id="ct-s2">21</span><span class="ct-label">SEC</span></div>
+          </div>
+        </div>
+        <div class="price-regular">Regular: $194</div>
+        <div class="price-main">$17</div>
+        <div class="price-note">One-time payment · Instant access · Yours forever</div>
+        <div class="price-features">
+          <div class="pf-row"><span class="pf-row-icon">📦</span><span class="pf-row-name">1,000+ Skill Files</span><span class="pf-row-detail">All 13 categories</span></div>
+          <div class="pf-row"><span class="pf-row-icon">🤖</span><span class="pf-row-name" style="font-weight:700;">100+ AI Agents Pro Pack</span><span class="pf-row-detail" style="color:var(--accent);">Included free</span></div>
+          <div class="pf-row"><span class="pf-row-icon">📖</span><span class="pf-row-name">Free Usage Guide</span><span class="pf-row-detail">30-page bonus</span></div>
+          <div class="pf-row"><span class="pf-row-icon">⚡</span><span class="pf-row-name">Instant Delivery</span><span class="pf-row-detail">Available now</span></div>
+          <div class="pf-row"><span class="pf-row-icon">🔄</span><span class="pf-row-name">Lifetime Updates</span><span class="pf-row-detail">Forever free</span></div>
+          <div class="pf-row"><span class="pf-row-icon">🛡️</span><span class="pf-row-name">7-Day Guarantee</span><span class="pf-row-detail">100% risk-free</span></div>
+        </div>
+        <a href="https://go.centerpag.com/PPU38CQCCKN" target="_blank" rel="noopener" class="price-cta">⚡ Get Skills + Agents for $17</a>
         <div class="price-microcopy">
           <span class="pmc">Secure Checkout</span>
           <span class="pmc">Instant Delivery</span>
@@ -718,7 +840,24 @@ function tf(btn){
   if(!open)item.classList.add('open');
 }
 
-// Countdown — resets every 8h from page load
+// Tab switcher
+function switchTab(tab){
+  var ps=document.getElementById('panel-skills');
+  var pb=document.getElementById('panel-bundle');
+  var ts=document.getElementById('tab-skills');
+  var tb=document.getElementById('tab-bundle');
+  if(tab==='skills'){
+    ps.style.display='block'; pb.style.display='none';
+    ts.style.background='var(--accent)'; ts.style.color='#fff'; ts.style.border='none';
+    tb.style.background='var(--bg2)'; tb.style.color='var(--fg2)'; tb.style.border='1px solid var(--border)';
+  } else {
+    ps.style.display='none'; pb.style.display='block';
+    tb.style.background='var(--accent)'; tb.style.color='#fff'; tb.style.border='none';
+    ts.style.background='var(--bg2)'; ts.style.color='var(--fg2)'; ts.style.border='1px solid var(--border)';
+  }
+}
+
+// Countdown — synced across both panels
 (function(){
   var totalSeconds = 8*3600 + 18*60 + 21;
   function update(){
@@ -726,9 +865,15 @@ function tf(btn){
     var h=Math.floor(totalSeconds/3600);
     var m=Math.floor((totalSeconds%3600)/60);
     var s=totalSeconds%60;
-    document.getElementById('ct-h').textContent=String(h).padStart(2,'0');
-    document.getElementById('ct-m').textContent=String(m).padStart(2,'0');
-    document.getElementById('ct-s').textContent=String(s).padStart(2,'0');
+    var hh=String(h).padStart(2,'0');
+    var mm=String(m).padStart(2,'0');
+    var ss=String(s).padStart(2,'0');
+    document.getElementById('ct-h').textContent=hh;
+    document.getElementById('ct-m').textContent=mm;
+    document.getElementById('ct-s').textContent=ss;
+    document.getElementById('ct-h2').textContent=hh;
+    document.getElementById('ct-m2').textContent=mm;
+    document.getElementById('ct-s2').textContent=ss;
     totalSeconds--;
   }
   update();
